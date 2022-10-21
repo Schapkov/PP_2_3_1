@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New user</title>
+</head>
+<body>
+<h1>New user</h1>
+
+<form th:method="POST" th:action="@{/}" th:object="${user}">
+    <table border="1">
+        <tr>
+            <td>
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name"/>
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="surname">Surname</label>
+                <input type="text" th:field="*{surname}" id="surname"/>
+                <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="age">Age</label>
+                <input type="number" th:field="*{age}" id="age"/>
+                <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <input type="submit" value="Add user">
+</form>
+
+</body>
+</html>
